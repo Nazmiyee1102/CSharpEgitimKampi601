@@ -22,7 +22,7 @@ namespace CSharpEgitimKampi601
 
         private void btn_listele_Click(object sender, EventArgs e)
         {
-            List<Customer> customers = customerOperations.GetAllCustomer();
+            List<Customer> customers = customerOperations.GetAllCustomers();
             dataGridView1.DataSource = customers;
         }
 
@@ -54,7 +54,7 @@ namespace CSharpEgitimKampi601
         private void btn_guncelle_Click(object sender, EventArgs e)
         {
             string id = txt_id.Text;
-            var updatedCustomer = new Customer()
+            var updateCustomer = new Customer()
             {
                 Firstname = txt_firstname.Text,
                 Lastname = txt_lastname.Text,
@@ -63,7 +63,7 @@ namespace CSharpEgitimKampi601
                 ShoppingCount = Convert.ToInt32(txt_shoppingcount.Text),
                 CustomerId = id
             };
-            customerOperations.UpdateCustomer(updatedCustomer);
+            customerOperations.UpdateCustomer(updateCustomer);
             MessageBox.Show("Müşteri Güncelleme İşlemi Başarılı!", "Uyarı",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
         }

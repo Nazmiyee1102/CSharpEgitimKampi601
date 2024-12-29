@@ -29,7 +29,7 @@ namespace CSharpEgitimKampi601.Services
             customerCollection.InsertOne(document);
         }
 
-        public List<Customer> GetAllCustomer()
+        public List<Customer> GetAllCustomers()
         {
             var connection = new MongoDbConnection();
             var customerCollection = connection.GetCustomersCollection();
@@ -56,13 +56,12 @@ namespace CSharpEgitimKampi601.Services
             var connection = new MongoDbConnection();
             var customerCollection = connection.GetCustomersCollection();
             var filter = Builders<BsonDocument>.Filter.Eq("_id", ObjectId.Parse(customer.CustomerId));//güncellenecek değeri filtreler
-            var updatedValue = Builders<BsonDocument>.Update.
-                Set("Name", customer.Firstname).
-                Set("Surname", customer.Lastname).
-                Set("City", customer.City).
-                Set("Balance", customer.Balance).
-                Set("Shopping Count", customer.ShoppingCount);
-
+            var updatedValue = Builders<BsonDocument>.Update
+                .Set("Firstname", customer.Firstname)
+                .Set("Lastname", customer.Lastname)
+                .Set("City", customer.City)
+                .Set("Balance", customer.Balance)
+                .Set("ShoppingCount", customer.ShoppingCount);
             customerCollection.UpdateOne(filter, updatedValue);
 
         }
